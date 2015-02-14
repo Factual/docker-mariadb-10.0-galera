@@ -1,0 +1,31 @@
+#!/bin/bash
+
+firstrun ()
+{
+	cp -rf /var/lib/mysql/* /data/
+	chown mysql -R /data
+}
+
+main() {
+
+	if [[ ! -f /data/debian-10.0.flag ]]
+	then
+		firstrun
+	fi
+
+	case "$1" in
+		new)
+			echo "Starting master"
+			/usr/bin/mysqld_safe --wsrep-new-cluster
+			;;
+		node)
+			echo "Starting node"
+			/usr/bin/mysqld_safe
+			;;
+		*)
+			echo "start <master|node>"
+	esac
+}
+
+main $@
+
