@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM boritzio/docker-base
 MAINTAINER Maxime Devalland <maxime@factual.com>
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
