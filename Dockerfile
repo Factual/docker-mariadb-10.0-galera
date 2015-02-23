@@ -11,7 +11,6 @@ RUN echo mariadb-galera-server-10.0 mysql-server/root_password password root | d
 RUN echo mariadb-galera-server-10.0 mysql-server/root_password_again password root | debconf-set-selections
 RUN LC_ALL=en_US.utf8 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::='--force-confnew' -qqy install mariadb-galera-server galera mariadb-client
 
-EXPOSE 3306 4444 4567 4568 
 RUN service mysql restart
 
 ADD start /bin/start
